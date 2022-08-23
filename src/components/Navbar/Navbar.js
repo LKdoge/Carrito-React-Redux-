@@ -19,11 +19,11 @@ const Navbar = ({ cart }) => {
   return (
     <div className={styles.navbar}>
       <Link to="/">
-        <h2 className={styles.navbar__logo}>Redux Shopping Cart</h2>
+        <h2 className={styles.navbar__logo}>Tienda</h2>
       </Link>
       <Link to="/cart">
         <div className={styles.navbar__cart}>
-          <h3 className={styles.cart__title}>Cart</h3>
+          <h3 className={styles.cart__title}>Cesta</h3>
           <img
             className={styles.cart__image}
             src="https://image.flaticon.com/icons/svg/102/102276.svg"

@@ -30,14 +30,14 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
             onClick={() => loadCurrentItem(product)}
             className={`${styles.buttons__btn} ${styles.buttons__view}`}
           >
-            View Item
+            Ver item
           </button>
         </Link>
         <button
           onClick={() => addToCart(product.id)}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
-          Add To Cart
+          Añadir a la cesta
         </button>
       </div>
     </div>

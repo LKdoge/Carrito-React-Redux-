@@ -29,7 +29,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
       </div>
       <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
-          <label htmlFor="qty">Qty</label>
+          <label htmlFor="qty">Cantidad</label>
           <input
             min="1"
             type="number"

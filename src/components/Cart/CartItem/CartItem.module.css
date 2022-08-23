@@ -65,10 +65,10 @@
   outline: none;
 }
 
-.actions__deleteItemBtn:hover {
+/* .actions__deleteItemBtn:hover {
   transform: scale(1.2) rotate(360deg);
   background-color: rgb(209, 15, 15);
-}
+} */
 
 .actions__deleteItemBtn img {
   width: 25px;

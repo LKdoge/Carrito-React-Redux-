@@ -21,12 +21,12 @@ const SingleItem = ({ current, addToCart }) => {
           onClick={() => addToCart(current.id)}
           className={styles.details__addBtn}
         >
-          Add To Cart
+          Añadir a la cesta
         </button>
       </div>
     </div>
   );
-};
+}; 
 
 const mapStateToProps = (state) => {
   return {
