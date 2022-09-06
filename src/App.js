@@ -8,7 +8,6 @@ import {
 import "./App.css";
 
 import { connect } from "react-redux";
-
 import Navbar from "./components/Navbar/Navbar";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
@@ -18,26 +17,23 @@ import {
 } from "./redux/Shopping/shopping-actions";
 // import { useEffect } from "react";
 
-const LoadProductsFromSession = () => {
+function LoadProductsFromSession (dispatch) {
   var executed = false;
-  return function() {
-      if (!executed) {
-          executed = true;
-          var values = []
-          values = JSON.parse(sessionStorage.getItem('products'));
-          values.map((i)=>{addToCart(i)})
-      }
-  };
+  if (!executed) {
+    executed = true;
+    var values = []
+    values = JSON.parse(sessionStorage.getItem("products"));
+    values.map((id) => { dispatch(addToCart(id)) })
+  }
 }
 
-function App({ current }) {
+function App({ current, dispatch }) {
   console.log(sessionStorage.getItem("products"))
   if (sessionStorage.length === 0){
     var tmp = []
     window.sessionStorage.setItem('products', JSON.stringify(tmp));
   }else{
-    LoadProductsFromSession();
-
+    LoadProductsFromSession(dispatch);
   }
 
   // useEffect(() => {
@@ -48,8 +44,7 @@ function App({ current }) {
     //   console.log(values)
     //   values.map((i)=>{addToCart(i)})
     // }
-
-
+    
   return (
     <Router>
       <div className="app">
