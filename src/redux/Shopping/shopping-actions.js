@@ -1,13 +1,7 @@
-import Product from "../../components/Products/Product/Product";
+// import Product from "../../components/Products/Product/Product";
 import * as actionTypes from "./shopping-types";
 
 export const addToCart = (itemID) => {
-  var tmp = []
-  if (sessionStorage.getItem('products').length > 0){
-    tmp = JSON.parse(sessionStorage.getItem('products'));
-    tmp.push(itemID)
-    window.sessionStorage.setItem('products', JSON.stringify(tmp));
-  }
   // else{
   //   var values = []
   //   values = JSON.parse(sessionStorage.getItem('products'));

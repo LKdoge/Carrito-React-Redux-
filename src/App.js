@@ -15,36 +15,14 @@ import SingleItem from "./components/SingleItem/SingleItem";
 import {
   addToCart,
 } from "./redux/Shopping/shopping-actions";
-// import { useEffect } from "react";
-
-function LoadProductsFromSession (dispatch) {
-  var executed = false;
-  if (!executed) {
-    executed = true;
-    var values = []
-    values = JSON.parse(sessionStorage.getItem("products"));
-    values.map((id) => { dispatch(addToCart(id)) })
-  }
-}
 
 function App({ current, dispatch }) {
-  console.log(sessionStorage.getItem("products"))
   if (sessionStorage.length === 0){
     var tmp = []
-    window.sessionStorage.setItem('products', JSON.stringify(tmp));
+    sessionStorage.setItem('products', JSON.stringify(tmp));
   }else{
     LoadProductsFromSession(dispatch);
   }
-
-  // useEffect(() => {
-  // }, []);
-    // }else{
-    //   var values = []
-    //   values = JSON.parse(sessionStorage.getItem('products'));
-    //   console.log(values)
-    //   values.map((i)=>{addToCart(i)})
-    // }
-    
   return (
     <Router>
       <div className="app">
@@ -61,6 +39,13 @@ function App({ current, dispatch }) {
       </div>
     </Router>
   );
+}
+
+function LoadProductsFromSession (dispatch) {
+  // const id = useSelector((state) => state.id);
+  var values = []
+  values = JSON.parse(sessionStorage.getItem("products"));
+  values.map((id) => { return dispatch(addToCart(id)) })
 }
 
 const mapStateToProps = (state) => {

@@ -9,6 +9,17 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions";
 
+function cartAddAction (id) {
+  if (sessionStorage.length !== 0){
+    var tmp = []
+    tmp = JSON.parse(sessionStorage.getItem('products'));
+    tmp.push(id)
+    sessionStorage.setItem('products', JSON.stringify(tmp));
+  }
+
+  // return addToCart(id)
+}
+
 const Product = ({ product, addToCart, loadCurrentItem }) => {
   return (
     <div className={styles.product}>
