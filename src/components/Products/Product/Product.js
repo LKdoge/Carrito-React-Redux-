@@ -16,7 +16,6 @@ function cartAddAction (id) {
     tmp.push(id)
     sessionStorage.setItem('products', JSON.stringify(tmp));
   }
-
   // return addToCart(id)
 }
 
