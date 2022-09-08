@@ -7,16 +7,18 @@ import { connect } from "react-redux";
 import {
   loadCurrentItem,
   addToCart,
-} from "../../../redux/Shopping/shopping-actions";
+} from "../../../redux/Shopping/shopping-actions"; 
 
-function cartAddAction (id) {
+const AddtoCartAction = (id) => {
   if (sessionStorage.length !== 0){
     var tmp = []
     tmp = JSON.parse(sessionStorage.getItem('products'));
+    sessionStorage.removeItem("products");
     tmp.push(id)
     sessionStorage.setItem('products', JSON.stringify(tmp));
   }
-  // return addToCart(id)
+  console.log(addToCart(id))
+  return addToCart(id)
 }
 
 const Product = ({ product, addToCart, loadCurrentItem }) => {
@@ -37,14 +39,14 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
       <div className={styles.product__buttons}>
         <Link to={`/product/${product.id}`}>
           <button
-            onClick={() => loadCurrentItem(product)}
+            onClick={() => loadCurrentItem(product.id, addToCart)}
             className={`${styles.buttons__btn} ${styles.buttons__view}`}
           >
             Ver item
           </button>
         </Link>
         <button
-          onClick={() => addToCart(product.id)}
+          onClick={() => addToCart(AddtoCartAction(product.id))}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
           Añadir a la cesta

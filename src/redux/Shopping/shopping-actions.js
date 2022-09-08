@@ -2,13 +2,6 @@
 import * as actionTypes from "./shopping-types";
 
 export const addToCart = (itemID) => {
-  // else{
-  //   var values = []
-  //   values = JSON.parse(sessionStorage.getItem('products'));
-  //   values.map((i)=>addToCart(i))
-  //   console.log(values)
-  // }
-
   return {
     type: actionTypes.ADD_TO_CART,
     payload: {

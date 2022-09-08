@@ -41,6 +41,7 @@ function App({ current, dispatch }) {
   );
 }
 
+
 function LoadProductsFromSession (dispatch) {
   // const id = useSelector((state) => state.id);
   var values = []
