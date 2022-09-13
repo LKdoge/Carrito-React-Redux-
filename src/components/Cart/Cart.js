@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import CartItem from "./CartItem/CartItem";
 
 const Cart = ({ cart }) => {
+  console.log(cart)
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 

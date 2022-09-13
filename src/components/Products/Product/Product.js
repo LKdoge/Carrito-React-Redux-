@@ -9,16 +9,15 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions"; 
 
-const AddtoCartAction = (id) => {
+const AddtoCartAction = (product) => {
   if (sessionStorage.length !== 0){
     var tmp = []
-    tmp = JSON.parse(sessionStorage.getItem('products'));
-    sessionStorage.removeItem("products");
-    tmp.push(id)
-    sessionStorage.setItem('products', JSON.stringify(tmp));
+    tmp = JSON.parse(sessionStorage.getItem('cart'));
+    sessionStorage.removeItem('cart');
+    tmp.push(product.id)
+    sessionStorage.setItem('cart', JSON.stringify(tmp));
   }
-  console.log(addToCart(id))
-  return addToCart(id)
+  return addToCart(product.id)
 }
 
 const Product = ({ product, addToCart, loadCurrentItem }) => {
@@ -39,14 +38,14 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
       <div className={styles.product__buttons}>
         <Link to={`/product/${product.id}`}>
           <button
-            onClick={() => loadCurrentItem(product.id, addToCart)}
+            onClick={() => loadCurrentItem(product, addToCart)}
             className={`${styles.buttons__btn} ${styles.buttons__view}`}
           >
             Ver item
           </button>
         </Link>
         <button
-          onClick={() => addToCart(AddtoCartAction(product.id))}
+          onClick={() => addToCart(AddtoCartAction(product))}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
           Añadir a la cesta

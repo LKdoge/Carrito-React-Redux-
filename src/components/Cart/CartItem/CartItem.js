@@ -43,10 +43,10 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
           onClick={() => removeFromCart(item.id)}
           className={styles.actions__deleteItemBtn}
         >
-          <img
+          {/* <img
             src="https://image.flaticon.com/icons/svg/709/709519.svg"
             alt=""
-          />
+          /> */}
         </button>
       </div>
     </div>

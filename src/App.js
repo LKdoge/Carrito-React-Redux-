@@ -16,10 +16,18 @@ import {
   addToCart,
 } from "./redux/Shopping/shopping-actions";
 
+function LoadProductsFromSession (dispatch) {
+  // const id = useSelector((state) => state.id);
+  var cart = []
+  cart = JSON.parse(sessionStorage.getItem('cart'));
+  cart.map((id) => { return dispatch(addToCart(id))} )
+  console.log(cart)
+}
+
 function App({ current, dispatch }) {
   if (sessionStorage.length === 0){
     var tmp = []
-    sessionStorage.setItem('products', JSON.stringify(tmp));
+    sessionStorage.setItem('cart', JSON.stringify(tmp));
   }else{
     LoadProductsFromSession(dispatch);
   }
@@ -41,13 +49,6 @@ function App({ current, dispatch }) {
   );
 }
 
-
-function LoadProductsFromSession (dispatch) {
-  // const id = useSelector((state) => state.id);
-  var values = []
-  values = JSON.parse(sessionStorage.getItem("products"));
-  values.map((id) => { return dispatch(addToCart(id)) })
-}
 
 const mapStateToProps = (state) => {
   return {
