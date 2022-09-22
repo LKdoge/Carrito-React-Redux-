@@ -9,15 +9,15 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions"; 
 
-const AddtoCartAction = (product) => {
+const AddtoCartAction = (Id) => {
   if (sessionStorage.length !== 0){
     var tmp = []
-    tmp = JSON.parse(sessionStorage.getItem('cart'));
-    sessionStorage.removeItem('cart');
-    tmp.push(product.id)
-    sessionStorage.setItem('cart', JSON.stringify(tmp));
+    tmp = JSON.parse(sessionStorage.getItem("cart"));
+    tmp.push(Id)
+    sessionStorage.setItem("cart", JSON.stringify(tmp));
   }
-  return addToCart(product.id)
+  return addToCart(Id)
+  // AddtoCartAction(product.Id)
 }
 
 const Product = ({ product, addToCart, loadCurrentItem }) => {
@@ -45,7 +45,7 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
           </button>
         </Link>
         <button
-          onClick={() => addToCart(AddtoCartAction(product))}
+          onClick={() => addToCart(product.id)}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
           Añadir a la cesta
