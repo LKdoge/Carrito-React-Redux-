@@ -5,8 +5,24 @@ import styles from "./Products.module.css";
 import { connect } from "react-redux";
 
 import Product from "./Product/Product";
+import {
+  addToCart,
+} from "../../redux/Shopping/shopping-actions";
 
-const Products = ({ products }) => {
+function LoadProductsFromSession (dispatch) {
+  // const id = useSelector((state) => state.id);
+  var cart = []
+  cart = JSON.parse(sessionStorage.getItem('cart'));
+  cart.map((id) => { return dispatch(addToCart(id))} )
+}
+
+const Products = ({ products , dispatch}) => {
+  if (sessionStorage.length === 0){
+    var tmp = []
+    sessionStorage.setItem('cart', JSON.stringify(tmp));
+    }else{
+      LoadProductsFromSession(dispatch);
+    }
   return (
     <div className={styles.products}>
       {products.map((product) => (

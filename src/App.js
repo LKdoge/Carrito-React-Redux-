@@ -16,28 +16,19 @@ import {
   addToCart,
 } from "./redux/Shopping/shopping-actions";
 
-function LoadProductsFromSession (dispatch) {
-  // const id = useSelector((state) => state.id);
-  var cart = []
-  cart = JSON.parse(sessionStorage.getItem('cart'));
-  cart.map((id) => { return dispatch(addToCart(id))} )
-  console.log(cart)
-}
+// function LoadProductsFromSession (dispatch) {
+//   // const id = useSelector((state) => state.id);
+//   var cart = []
+//   cart = JSON.parse(sessionStorage.getItem('cart'));
+//   cart.map((id) => { return dispatch(addToCart(id))} )
+// }
 
 class App extends Component{
   constructor() {
     super();
     this.state = {tmp: []};
   }
-
   render() {
-    // if (sessionStorage.length === 0){
-    // var tmp = []
-    // sessionStorage.setItem('cart', JSON.stringify(tmp));
-    // }else{
-    //   LoadProductsFromSession({ dispatch });
-    // }
-    
     return  <Router>
               <div className="app">
                 <Navbar />
@@ -83,8 +74,13 @@ class App extends Component{
 const mapStateToProps = (state) => {
   return {
     current: state.shop.currentItem,
-    
   };
 };
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+      dispatch: dispatch
+  }
+}
+
+export default connect(mapStateToProps, null)(App)

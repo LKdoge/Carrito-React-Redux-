@@ -4,7 +4,6 @@ import styles from "./Cart.module.css";
 import { connect } from "react-redux";
 
 import CartItem from "./CartItem/CartItem";
-
 const Cart = ({ cart }) => {
   console.log(cart)
   const [totalPrice, setTotalPrice] = useState(0);
